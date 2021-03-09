@@ -9,14 +9,14 @@ app.use(function (req, res, next) {
   console.log(ipInfo);
   req.clientIp = ipInfo.clientIp;
   // { clientIp: '127.0.0.1', clientIpRoutable: false }
-  fetch(`https://ipapi.co/${req.clientIp}/json`)
-    .then((doc) => (req.userIpInfo = doc))
-    .catch((err) => console.log(err));
 
   next();
 });
 
 app.get("/api", (req, res) => {
+  fetch(`https://ipapi.co/${req.clientIp}/json`)
+    .then((doc) => (req.userIpInfo = doc))
+    .catch((err) => console.log(err));
   res.json({
     ip: req.connection.remoteAddress,
     ipInfo: req.ipInfo,
