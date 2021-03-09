@@ -9,5 +9,5 @@ app.get("/api", (req, res) => {
     ip: req.ip,
   });
 });
-
+//listen port
 app.listen(process.env.PORT, () => console.log("Connected"));
