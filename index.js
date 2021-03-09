@@ -6,7 +6,7 @@ app.use(express.json());
 
 app.get("/api", (req, res) => {
   res.json({
-    ip: req.ip,
+    ip: req.connection.remoteAddress,
   });
 });
 //listen port
