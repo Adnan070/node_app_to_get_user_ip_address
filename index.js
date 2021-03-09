@@ -14,6 +14,7 @@ app.use(function (req, res, next) {
 app.get("/api", (req, res) => {
   res.json({
     ip: req.connection.remoteAddress,
+    ipInfo: req.ipInfo,
   });
 });
 //listen port
