@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+var getIP = require("ipware")().get_ip;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -18,4 +19,4 @@ app.get("/api", (req, res) => {
   });
 });
 //listen port
-app.listen(process.env.PORT, () => console.log("Connected"));
+app.listen(process.env.PORT || 5000, () => console.log("Connected"));
