@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 var getIP = require("ipware")().get_ip;
+const fetch = require('node-fetch');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
