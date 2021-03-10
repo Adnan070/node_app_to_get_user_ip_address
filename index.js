@@ -17,11 +17,13 @@ app.use(function (req, res, next) {
 app.get("/api", (req, res) => {
   console.log(req.clientIp)
   fetch(`https://ipapi.co/${req.clientIp}/json`)
-    .then((doc) => (res.json({
+    .then((doc) => {
+      console.log(doc)
+      res.json({
       ip: req.connection.remoteAddress,
       ipInfo: req.clientIp,
       userIpInfo: doc,
-    })))
+    })})
     .catch((err) => console.log(err));
   
 });
