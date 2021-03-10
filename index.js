@@ -15,14 +15,15 @@ app.use(function (req, res, next) {
 });
 
 app.get("/api", (req, res) => {
+  console.log(req.clientIp)
   fetch(`https://ipapi.co/${req.clientIp}/json`)
-    .then((doc) => (req.userIpInfo = doc))
+    .then((doc) => (res.json({
+      ip: req.connection.remoteAddress,
+      ipInfo: req.clientIp,
+      userIpInfo: doc,
+    })))
     .catch((err) => console.log(err));
-  res.json({
-    ip: req.connection.remoteAddress,
-    ipInfo: req.ipInfo,
-    userIpInfo: req.userIpInfo,
-  });
+  
 });
 //listen port
 app.listen(process.env.PORT || 5000, () => console.log("Connected"));
